@@ -16,7 +16,7 @@ test('get three random pokemon that do not match', (expect) => {
         pokeThree = getRandomPokemon();
     }
     // Set up your arguments and expectations
-    const expected = pokeOne.id !== pokeTwo.id || pokeOne.id !== pokeThree.id || pokeTwo.id !== pokeThree.id;
+    const expected = true;
     
     //Act 
     // Call the function you're testing and set the result to a const
@@ -24,5 +24,5 @@ test('get three random pokemon that do not match', (expect) => {
 
     //Expect
     // Make assertions about what is expected versus the actual result
-    expect.equal((pokeOne.id, pokeTwo.id, pokeThree.id), expected);
+    expect.equal(actual, expected);
 });

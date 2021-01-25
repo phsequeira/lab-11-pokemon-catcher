@@ -1,5 +1,4 @@
 // import functions and grab DOM elements
-import pokemon from './data.js';
 import { setThreePokemon } from './utils.js';
 // initialize state
 
