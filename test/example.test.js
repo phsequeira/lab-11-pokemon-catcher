@@ -20,9 +20,9 @@ test('get three random pokemon that do not match', (expect) => {
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = pokeOne.id, pokeTwo.id, pokeThree.id;
+    const actual = false;
 
     //Expect
     // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected);
+    expect.equal((pokeOne.id, pokeTwo.id, pokeThree.id), expected);
 });
