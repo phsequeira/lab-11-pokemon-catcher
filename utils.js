@@ -7,6 +7,11 @@ export function getRandomPokemon() {
 
     return pokemon[randomIndex];
 }
+export function findByUnderscoreId(array, id) {
+    for (let item of array) {
+        if (item.pokemon === id) return item;
+    }
+}
 
 function renderPokeImage(pokemonItem) {
     const image = document.createElement('img');
