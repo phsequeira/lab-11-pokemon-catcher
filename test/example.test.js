@@ -10,17 +10,20 @@ test('get three random pokemon that do not match', (expect) => {
     let pokeTwo = getRandomPokemon();
     let pokeThree = getRandomPokemon();
 
-    while (pokeOne.id === pokeTwo.id || pokeOne.id === pokeThree.id || pokeTwo.id === pokeThree.id) {
-        pokeOne = getRandomPokemon();
-        pokeTwo = getRandomPokemon();
-        pokeThree = getRandomPokemon();
+    function setThreePokemon() {
+        while (pokeOne.id === pokeTwo.id || pokeOne.id === pokeThree.id || pokeTwo.id === pokeThree.id) {
+            pokeOne = getRandomPokemon();
+            pokeTwo = getRandomPokemon();
+            pokeThree = getRandomPokemon();
+        }
+        return pokeOne.id, pokeTwo.id, pokeThree.id;
     }
     // Set up your arguments and expectations
-    const expected = true;
+    const expected = pokeOne.id !== pokeTwo.id || pokeOne.id !== pokeThree.id || pokeTwo.id !== pokeThree.id;
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = false;
+    const actual = setThreePokemon();
 
     //Expect
     // Make assertions about what is expected versus the actual result
