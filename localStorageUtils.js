@@ -1,5 +1,7 @@
 import { findByUnderscoreId } from './utils.js';
+
 const POKEMON = 'POKEMON';
+const defaultEmptyGame = [];
 
 export function gameStats() {
     let stats = JSON.parse(localStorage.getItem(POKEMON));
@@ -16,29 +18,34 @@ export function setGameStats(freshStats){
     localStorage.setItem(POKEMON, JSON.stringify(freshStats));
 }
 
-export function incrementSeen(pokemon) {
+export function incrementSeen(_id) {
     const stats = gameStats();
-    const pokemonFound = findByUnderscoreId(pokemon);
+    const pokemon = findByUnderscoreId(_id, stats);
 
-    if (!pokemonFound) {
-        // eslint-disable-next-line no-unused-vars
+    if (!pokemon) {
         const newStat = {
-            pokemon: pokemon,
+            _id: _id,
             seen: 1,
             caught: 0,
         };
+
+        stats.push(newStat);
     } else {
-        pokemonFound.seen++;
+        pokemon.seen++;
     }
+
     setGameStats(stats);
 }
 
-export function incrementCaught(pokemon) {
+export function incrementCaught(_id) {
     const stats = gameStats();
-    const pokemonFound = findByUnderscoreId(pokemon);
-
-    pokemonFound.caught++;
+    const pokemon = findByUnderscoreId(_id, stats);
+    pokemon.caught++;
 
     setGameStats(stats);
-
+}
+export function clearGame() {
+    const stringydefaultGame = JSON.stringify(defaultEmptyGame);
+    
+    localStorage.setItem(POKEMON, stringydefaultGame);
 }

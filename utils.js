@@ -1,4 +1,5 @@
 import pokemon from './data.js';
+import { incrementCaught, incrementSeen } from './localStorageUtils.js';
 
 let pokemonCaught = 0;
 
@@ -7,22 +8,23 @@ export function getRandomPokemon() {
 
     return pokemon[randomIndex];
 }
-export function findByUnderscoreId(array, id) {
+export function findByUnderscoreId(id, array) {
     for (let item of array) {
-        if (item.pokemon === id) return item;
+        if (item._id === id) return item;
     }
 }
 
-function renderPokeImage(pokemonItem) {
+function renderPokeImage(pokemon) {
     const image = document.createElement('img');
     image.className = 'poke-img';
-    image.src = pokemonItem.url_image;
+    image.src = pokemon.url_image;
 
     image.addEventListener('click', () => {
+        incrementCaught(pokemon.pokemon);
         if (pokemonCaught < 10){
             setThreePokemon();
         } else {
-            window.location = './results.html';
+            window.location = '../results/index.html';
         }
     });
     return image;
@@ -43,6 +45,10 @@ export function setThreePokemon() {
     const img1 = renderPokeImage(pokeOne);
     const img2 = renderPokeImage(pokeTwo);
     const img3 = renderPokeImage(pokeThree);
+
+    incrementSeen(pokeOne.pokemon);
+    incrementSeen(pokeTwo.pokemon);
+    incrementSeen(pokeThree.pokemon);
 
     const div = document.getElementById('poke-div');
     div.textContent = '';

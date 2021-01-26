@@ -16,7 +16,8 @@ test('get three random pokemon that do not match', (expect) => {
             pokeTwo = getRandomPokemon();
             pokeThree = getRandomPokemon();
         }
-        return pokeOne.id, pokeTwo.id, pokeThree.id;
+
+        return pokeOne.id !== pokeTwo.id || pokeOne.id !== pokeThree.id || pokeTwo.id !== pokeThree.id;
     }
     // Set up your arguments and expectations
     const expected = pokeOne.id !== pokeTwo.id || pokeOne.id !== pokeThree.id || pokeTwo.id !== pokeThree.id;
