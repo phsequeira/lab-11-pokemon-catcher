@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title>Document</title>
 </head>
 
@@ -20,13 +21,7 @@
     <main>
         <section class="main-section">
             <h2>Results from your game!</h2>
-            <table>
-                <tr>
-                    <th>Type</th>
-                    <th>Seen</th>
-                    <th>Caught</th>
-                </tr>
-            </table>
+            <canvas id="chart"></canvas>
             <br>
             <button id="game-reset">Play Again!</button>
         </section>
